@@ -1,0 +1,24 @@
+{
+  "name": "gutenlypso-e2e",
+  "version": "0.1.0",
+  "private": true,
+  "description": "A new WordPress editor experience",
+  "main": "index.js",
+  "scripts": {
+    "test": "node ./test.js"
+  },
+  "author": "Automattic",
+  "license": "GPL-2.0-or-later",
+  "dependencies": {
+    "@babel/core": "^7.0.0-0",
+    "@wordpress/jest-console": "2.0.6",
+    "@wordpress/jest-preset-default": "3.0.2",
+    "babel-core": "^6.26.3",
+    "jest": "23.6.0",
+    "jest-puppeteer": "3.2.1",
+    "prettier": "^1.15.2",
+    "puppeteer": "1.6.1",
+    "react": "16.6.3",
+    "react-dom": "16.6.3"
+  }
+}
