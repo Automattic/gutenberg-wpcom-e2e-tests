@@ -1,0 +1,9 @@
+{
+	"calypsoBaseURL": "https://wpcalypso.wordpress.com",
+	"testAccounts": {
+		"gutenbergSimpleSiteUser": [
+			"username",
+			"password"
+		]
+	}
+}
