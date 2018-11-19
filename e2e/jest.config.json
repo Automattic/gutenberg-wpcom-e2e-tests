@@ -3,7 +3,7 @@
 	"preset": "jest-puppeteer",
 	"setupTestFrameworkScriptFile": "<rootDir>/e2e/support/setup-test-framework.js",
 	"testMatch": [
-		"<rootDir>/e2e/specs/a11y.test.js"
+		"<rootDir>/e2e/specs/adding-blocks.test.js"
 	],
 	"transform": {
 		"^.+\\.jsx?$": "<rootDir>/node_modules/babel-jest"

@@ -5,7 +5,7 @@
   "description": "Gutenlypso e2e tests",
   "main": "index.js",
   "scripts": {
-    "test": "node ./index.js test",
+    "test": "cross-env JEST_PUPPETEER_CONFIG=./e2e/puppeteer.config.js node ./index.js test",
     "test-puppeteer": "node ./index.js test-puppeteer"
   },
   "author": "Automattic",

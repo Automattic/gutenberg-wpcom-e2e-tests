@@ -1,7 +1,12 @@
 {
-	"calypsoBaseURL": "https://wpcalypso.wordpress.com",
+	"calypsoBaseURL": "http://calypso.localhost:3000/",
+	"sandboxURL": "https://exampledotcomsandbox.wordpress.com",
 	"testAccounts": {
 		"gutenbergSimpleSiteUser": [
+			"username",
+			"password"
+		],
+		"sandboxSiteUser": [
 			"username",
 			"password"
 		]
