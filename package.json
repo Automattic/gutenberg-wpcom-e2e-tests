@@ -1,8 +1,8 @@
 {
   "name": "gutenlypso-e2e",
   "version": "0.1.0",
-  "private": true,
-  "description": "A new WordPress editor experience",
+  "repository": "git+https://github.com/Copons/gutenlypso-e2e.git",
+  "description": "Gutenlypso e2e tests",
   "main": "index.js",
   "scripts": {
     "test": "node ./test.js"
