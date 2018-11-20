@@ -6,6 +6,7 @@ import {
 	clickOnMoreMenuItem,
 	clickOnCloseModalButton,
 	pressWithModifier,
+	ACCESS_MODIFIER_KEYS,
 } from '../support/utils';
 
 describe( 'keyboard shortcut help modal', () => {
@@ -26,13 +27,13 @@ describe( 'keyboard shortcut help modal', () => {
 	} );
 
 	it( 'displays the shortcut help modal when opened using the shortcut key (access+h)', async () => {
-		await pressWithModifier( 'access', 'h' );
+		await pressWithModifier( ACCESS_MODIFIER_KEYS, 'h' );
 		const shortcutHelpModalElements = await page.$$( '.edit-post-keyboard-shortcut-help' );
 		expect( shortcutHelpModalElements ).toHaveLength( 1 );
 	} );
 
 	it( 'closes the shortcut help modal when the shortcut key (access+h) is pressed again', async () => {
-		await pressWithModifier( 'access', 'h' );
+		await pressWithModifier( ACCESS_MODIFIER_KEYS, 'h' );
 		const shortcutHelpModalElements = await page.$$( '.edit-post-keyboard-shortcut-help' );
 		expect( shortcutHelpModalElements ).toHaveLength( 0 );
 	} );

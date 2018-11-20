@@ -45,7 +45,6 @@ wp_enqueue_script(
 		'wp-element',
 		'wp-i18n',
 		'wp-plugins',
-		'wp-annotations',
 	),
 	filemtime( plugin_dir_path( __FILE__ ) . 'plugins-api/sidebar.js' ),
 	true

@@ -7,6 +7,8 @@ import {
 	insertBlock,
 	clickBlockAppender,
 	pressWithModifier,
+	META_KEY,
+	ACCESS_MODIFIER_KEYS,
 } from '../support/utils';
 
 describe( 'RichText', () => {
@@ -29,8 +31,8 @@ describe( 'RichText', () => {
 	it( 'should apply formatting with access shortcut', async () => {
 		await clickBlockAppender();
 		await page.keyboard.type( 'test' );
-		await pressWithModifier( 'primary', 'a' );
-		await pressWithModifier( 'access', 'd' );
+		await pressWithModifier( META_KEY, 'a' );
+		await pressWithModifier( ACCESS_MODIFIER_KEYS, 'd' );
 
 		expect( await getEditedPostContent() ).toMatchSnapshot();
 	} );
@@ -38,8 +40,8 @@ describe( 'RichText', () => {
 	it( 'should apply formatting with primary shortcut', async () => {
 		await clickBlockAppender();
 		await page.keyboard.type( 'test' );
-		await pressWithModifier( 'primary', 'a' );
-		await pressWithModifier( 'primary', 'b' );
+		await pressWithModifier( META_KEY, 'a' );
+		await pressWithModifier( META_KEY, 'b' );
 
 		expect( await getEditedPostContent() ).toMatchSnapshot();
 	} );
@@ -48,10 +50,10 @@ describe( 'RichText', () => {
 		await clickBlockAppender();
 		await page.keyboard.type( 'Some ' );
 		// All following characters should now be bold.
-		await pressWithModifier( 'primary', 'b' );
+		await pressWithModifier( META_KEY, 'b' );
 		await page.keyboard.type( 'bold' );
 		// All following characters should no longer be bold.
-		await pressWithModifier( 'primary', 'b' );
+		await pressWithModifier( META_KEY, 'b' );
 		await page.keyboard.type( '.' );
 
 		expect( await getEditedPostContent() ).toMatchSnapshot();

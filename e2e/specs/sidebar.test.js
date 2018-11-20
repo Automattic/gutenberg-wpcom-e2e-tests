@@ -2,10 +2,8 @@
  * Internal dependencies
  */
 import {
-	findSidebarPanelWithTitle,
 	newPost,
 	observeFocusLoss,
-	openDocumentSettingsSidebar,
 	pressWithModifier,
 	setViewport,
 } from '../support/utils';
@@ -14,12 +12,12 @@ const SIDEBAR_SELECTOR = '.edit-post-sidebar';
 const ACTIVE_SIDEBAR_TAB_SELECTOR = '.edit-post-sidebar__panel-tab.is-active';
 const ACTIVE_SIDEBAR_BUTTON_TEXT = 'Document';
 
-describe( 'Sidebar', () => {
+describe( 'Publishing', () => {
 	beforeAll( () => {
 		observeFocusLoss();
 	} );
 
-	it( 'should have sidebar visible at the start with document sidebar active on desktop', async () => {
+	it( 'Should have sidebar visible at the start with document sidebar active on desktop', async () => {
 		await setViewport( 'large' );
 		await newPost();
 		const { nodesCount, content, height, width } = await page.$$eval( ACTIVE_SIDEBAR_TAB_SELECTOR, ( nodes ) => {
@@ -43,14 +41,14 @@ describe( 'Sidebar', () => {
 		expect( height ).toBeGreaterThan( 10 );
 	} );
 
-	it( 'should have the sidebar closed by default on mobile', async () => {
+	it( 'Should have the sidebar closed by default on mobile', async () => {
 		await setViewport( 'small' );
 		await newPost();
 		const sidebar = await page.$( SIDEBAR_SELECTOR );
 		expect( sidebar ).toBeNull();
 	} );
 
-	it( 'should close the sidebar when resizing from desktop to mobile', async () => {
+	it( 'Should close the sidebar when resizing from desktop to mobile', async () => {
 		await setViewport( 'large' );
 		await newPost();
 
@@ -64,7 +62,7 @@ describe( 'Sidebar', () => {
 		expect( sidebarsMobile ).toHaveLength( 0 );
 	} );
 
-	it( 'should reopen sidebar the sidebar when resizing from mobile to desktop if the sidebar was closed automatically', async () => {
+	it( 'Should reopen sidebar the sidebar when resizing from mobile to desktop if the sidebar was closed automatically', async () => {
 		await setViewport( 'large' );
 		await newPost();
 		await setViewport( 'small' );
@@ -78,14 +76,14 @@ describe( 'Sidebar', () => {
 		expect( sidebarsDesktop ).toHaveLength( 1 );
 	} );
 
-	it( 'should preserve tab order while changing active tab', async () => {
+	it( 'Should preserve tab order while changing active tab', async () => {
 		await newPost();
 
 		// Region navigate to Sidebar.
-		await pressWithModifier( 'ctrl', '`' );
-		await pressWithModifier( 'ctrl', '`' );
-		await pressWithModifier( 'ctrl', '`' );
-		await pressWithModifier( 'ctrl', '`' );
+		await pressWithModifier( 'Control', '`' );
+		await pressWithModifier( 'Control', '`' );
+		await pressWithModifier( 'Control', '`' );
+		await pressWithModifier( 'Control', '`' );
 
 		// Tab lands at first (presumed selected) option "Document".
 		await page.keyboard.press( 'Tab' );
@@ -103,33 +101,5 @@ describe( 'Sidebar', () => {
 			document.activeElement.classList.contains( 'is-active' )
 		) );
 		expect( isActiveBlockTab ).toBe( true );
-	} );
-
-	it( 'should be possible to programmatically remove Document Settings panels', async () => {
-		await newPost();
-
-		await openDocumentSettingsSidebar();
-
-		expect( await findSidebarPanelWithTitle( 'Categories' ) ).toBeDefined();
-		expect( await findSidebarPanelWithTitle( 'Tags' ) ).toBeDefined();
-		expect( await findSidebarPanelWithTitle( 'Featured Image' ) ).toBeDefined();
-		expect( await findSidebarPanelWithTitle( 'Excerpt' ) ).toBeDefined();
-		expect( await findSidebarPanelWithTitle( 'Discussion' ) ).toBeDefined();
-
-		await page.evaluate( () => {
-			const { removeEditorPanel } = wp.data.dispatch( 'core/edit-post' );
-
-			removeEditorPanel( 'taxonomy-panel-category' );
-			removeEditorPanel( 'taxonomy-panel-post_tag' );
-			removeEditorPanel( 'featured-image' );
-			removeEditorPanel( 'post-excerpt' );
-			removeEditorPanel( 'discussion-panel' );
-		} );
-
-		expect( await findSidebarPanelWithTitle( 'Categories' ) ).toBeUndefined();
-		expect( await findSidebarPanelWithTitle( 'Tags' ) ).toBeUndefined();
-		expect( await findSidebarPanelWithTitle( 'Featured Image' ) ).toBeUndefined();
-		expect( await findSidebarPanelWithTitle( 'Excerpt' ) ).toBeUndefined();
-		expect( await findSidebarPanelWithTitle( 'Discussion' ) ).toBeUndefined();
 	} );
 } );

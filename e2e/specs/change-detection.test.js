@@ -7,6 +7,7 @@ import {
 	pressWithModifier,
 	ensureSidebarOpened,
 	publishPost,
+	META_KEY,
 } from '../support/utils';
 
 describe( 'Change detection', () => {
@@ -68,7 +69,7 @@ describe( 'Change detection', () => {
 		await interceptSave();
 
 		// Keyboard shortcut Ctrl+S save.
-		await pressWithModifier( 'primary', 'S' );
+		await pressWithModifier( META_KEY, 'S' );
 
 		expect( hadInterceptedSave ).toBe( false );
 	} );
@@ -90,11 +91,11 @@ describe( 'Change detection', () => {
 	it( 'Should prompt to confirm unsaved changes for autosaved draft for non-content fields', async () => {
 		await page.type( '.editor-post-title__input', 'Hello World' );
 
-		// Toggle post as needing review (not persisted for autosave).
+		// Toggle post as sticky (not persisted for autosave).
 		await ensureSidebarOpened();
 
-		const postPendingReviewButton = ( await page.$x( "//label[contains(text(), 'Pending Review')]" ) )[ 0 ];
-		await postPendingReviewButton.click( 'button' );
+		const postStickyToggleButton = ( await page.$x( "//label[contains(text(), 'Stick to the Front Page')]" ) )[ 0 ];
+		await postStickyToggleButton.click( 'button' );
 
 		// Force autosave to occur immediately.
 		await Promise.all( [
@@ -129,17 +130,7 @@ describe( 'Change detection', () => {
 		await assertIsDirty( true );
 	} );
 
-	it( 'Should not prompt to confirm unsaved changes for new post', async () => {
-		await assertIsDirty( false );
-	} );
-
-	it( 'Should not prompt to confirm unsaved changes for new post with initial edits', async () => {
-		await newPost( {
-			title: 'My New Post',
-			content: 'My content',
-			excerpt: 'My excerpt',
-		} );
-
+	it( 'Should not prompt to confirm unsaved changes', async () => {
 		await assertIsDirty( false );
 	} );
 
@@ -163,7 +154,7 @@ describe( 'Change detection', () => {
 			page.waitForSelector( '.editor-post-saved-state.is-saved' ),
 
 			// Keyboard shortcut Ctrl+S save.
-			pressWithModifier( 'primary', 'S' ),
+			pressWithModifier( META_KEY, 'S' ),
 		] );
 
 		await assertIsDirty( false );
@@ -177,13 +168,13 @@ describe( 'Change detection', () => {
 			page.waitForSelector( '.editor-post-saved-state.is-saved' ),
 
 			// Keyboard shortcut Ctrl+S save.
-			pressWithModifier( 'primary', 'S' ),
+			pressWithModifier( META_KEY, 'S' ),
 		] );
 
 		await interceptSave();
 
 		// Keyboard shortcut Ctrl+S save.
-		await pressWithModifier( 'primary', 'S' );
+		await pressWithModifier( META_KEY, 'S' );
 
 		expect( hadInterceptedSave ).toBe( false );
 	} );
@@ -195,7 +186,7 @@ describe( 'Change detection', () => {
 
 		await Promise.all( [
 			// Keyboard shortcut Ctrl+S save.
-			pressWithModifier( 'primary', 'S' ),
+			pressWithModifier( META_KEY, 'S' ),
 
 			// Ensure save update fails and presents button.
 			page.waitForXPath(
@@ -221,7 +212,7 @@ describe( 'Change detection', () => {
 		await interceptSave();
 
 		// Keyboard shortcut Ctrl+S save.
-		await pressWithModifier( 'primary', 'S' );
+		await pressWithModifier( META_KEY, 'S' );
 
 		await releaseSaveIntercept();
 
@@ -237,7 +228,7 @@ describe( 'Change detection', () => {
 		await interceptSave();
 
 		// Keyboard shortcut Ctrl+S save.
-		await pressWithModifier( 'primary', 'S' );
+		await pressWithModifier( META_KEY, 'S' );
 
 		await page.type( '.editor-post-title__input', '!' );
 
@@ -254,7 +245,7 @@ describe( 'Change detection', () => {
 		await interceptSave();
 
 		// Keyboard shortcut Ctrl+S save.
-		await pressWithModifier( 'primary', 'S' );
+		await pressWithModifier( META_KEY, 'S' );
 
 		// Dirty post while save is in-flight.
 		await page.type( '.editor-post-title__input', '!' );
@@ -276,7 +267,7 @@ describe( 'Change detection', () => {
 		await interceptSave();
 
 		// Keyboard shortcut Ctrl+S save.
-		await pressWithModifier( 'primary', 'S' );
+		await pressWithModifier( META_KEY, 'S' );
 
 		await clickBlockAppender();
 

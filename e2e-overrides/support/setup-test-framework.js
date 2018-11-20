@@ -19,7 +19,7 @@ import {
 	enablePageDialogAccept,
 	setViewport,
 	visitAdmin,
-} from '../../e2e/utils';
+} from '../../e2e/support/utils';
 
 /**
  * Environment variables
@@ -116,12 +116,6 @@ function observeConsoleLogging() {
 		// An exception is made for _blanket_ deprecation warnings: Those
 		// which log regardless of whether a deprecated feature is in use.
 		if (text.includes('This is a global warning')) {
-			return;
-		}
-
-		// Viewing posts on the front end can result in this error, which
-		// has nothing to do with Gutenberg.
-		if (text.includes('net::ERR_UNKNOWN_URL_SCHEME')) {
 			return;
 		}
 

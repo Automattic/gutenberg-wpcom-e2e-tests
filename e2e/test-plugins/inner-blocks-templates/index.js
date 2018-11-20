@@ -10,13 +10,6 @@
 		} ],
 	];
 
-	var TEMPLATE_PARAGRAPH_PLACEHOLDER = [
-		[ 'core/paragraph', {
-			fontSize: 'large',
-			placeholder: 'Content…',
-		} ],
-	];
-
 	var save = function() {
 		return el( InnerBlocks.Content );
 	};
@@ -49,23 +42,6 @@
 					{
 						template: TEMPLATE,
 						templateLock: 'all',
-					}
-			);
-		},
-
-		save,
-	} );
-
-	registerBlockType( 'test/test-inner-blocks-paragraph-placeholder', {
-		title: 'Test Inner Blocks Paragraph Placeholder',
-		icon: 'cart',
-		category: 'common',
-
-		edit: function( props ) {
-			return el(
-					InnerBlocks,
-					{
-						template: TEMPLATE_PARAGRAPH_PLACEHOLDER,
 					}
 			);
 		},

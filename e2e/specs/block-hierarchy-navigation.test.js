@@ -2,6 +2,8 @@
  * Internal dependencies
  */
 import {
+	ACCESS_MODIFIER_KEYS,
+	META_KEY,
 	newPost,
 	insertBlock,
 	getEditedPostContent,
@@ -10,7 +12,7 @@ import {
 } from '../support/utils';
 
 async function openBlockNavigator() {
-	return pressWithModifier( 'access', 'o' );
+	return pressWithModifier( ACCESS_MODIFIER_KEYS, 'o' );
 }
 
 describe( 'Navigating the block hierarchy', () => {
@@ -61,10 +63,10 @@ describe( 'Navigating the block hierarchy', () => {
 		await page.keyboard.press( 'Enter' );
 
 		// Move focus to the sidebar area.
-		await pressWithModifier( 'ctrl', '`' );
-		await pressWithModifier( 'ctrl', '`' );
-		await pressWithModifier( 'ctrl', '`' );
-		await pressWithModifier( 'ctrl', '`' );
+		await pressWithModifier( 'Control', '`' );
+		await pressWithModifier( 'Control', '`' );
+		await pressWithModifier( 'Control', '`' );
+		await pressWithModifier( 'Control', '`' );
 		await pressTimes( 'Tab', 4 );
 
 		// Tweak the columns count by increasing it by one.
@@ -97,7 +99,7 @@ describe( 'Navigating the block hierarchy', () => {
 		await page.keyboard.press( 'Space' );
 
 		// Replace its content.
-		await pressWithModifier( 'primary', 'A' );
+		await pressWithModifier( META_KEY, 'A' );
 		await page.keyboard.type( 'and I say hello' );
 
 		expect( await getEditedPostContent() ).toMatchSnapshot();
