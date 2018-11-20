@@ -4,6 +4,8 @@ Manual e2e suite for Gutenberg running in a WPCOM Sandbox.
 
 ## Instructions
 
+### Note: These tests will wipe out all posts and comments from the site!
+
 Copy the `config-example.json` file as `config.json` and fill the `sandbox` object with the URL of a WPCOM Sandbox site and the credentials of an editor (or higher role) user.
 
 To observe the tests visually, set `puppeteer.headless = false` in `config.json`, and increase `puppeteer.slowMo` until the tests are slow enough (I've found `50` to be my sweet spot).
