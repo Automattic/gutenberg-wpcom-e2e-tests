@@ -1,8 +1,10 @@
 /** @format */
 
+const { headless, slowMo } = require('../config.json').puppeteer;
+
 module.exports = {
 	launch: {
-		headless: false,
-		slowMo: 10,
+		headless,
+		slowMo,
 	},
 };

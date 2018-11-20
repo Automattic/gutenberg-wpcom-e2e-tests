@@ -1,16 +1,18 @@
 /** @format */
 
-import config from '../../../config.json';
+import { sandbox } from '../../../config.json';
+
+const { username, password, url } = sandbox;
 
 const WP_ADMIN_USER = {
-	username: config.testAccounts.gutenbergSimpleSiteUser[0],
-	password: config.testAccounts.gutenbergSimpleSiteUser[1],
+	username,
+	password,
 };
 
 const {
 	WP_USERNAME = WP_ADMIN_USER.username,
 	WP_PASSWORD = WP_ADMIN_USER.password,
-	WP_BASE_URL = config.sandboxURL,
+	WP_BASE_URL = url,
 } = process.env;
 
 export { WP_ADMIN_USER, WP_USERNAME, WP_PASSWORD, WP_BASE_URL };
