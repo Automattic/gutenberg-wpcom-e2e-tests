@@ -12,11 +12,14 @@ import { URL } from 'url';
  */
 import { times, castArray } from 'lodash';
 
-import { sandbox } from '../../config.json';
+/***** OVERRIDES *****/
 
+import { sandbox } from '../../config.json';
 const { username, password, url } = sandbox;
 
 const { WP_BASE_URL = url, WP_USERNAME = username, WP_PASSWORD = password } = process.env;
+
+/***** END OVERRIDES *****/
 
 /**
  * Platform-specific meta key.
@@ -77,42 +80,20 @@ async function goToWPPath(WPPath, query) {
 	await page.goto(getUrl(WPPath, query));
 }
 
-/*async function login() {
+/***** OVERRIDES *****/
+
+/*
+async function login() {
 	await page.type('#user_login', WP_USERNAME);
 	await page.type('#user_pass', WP_PASSWORD);
 
 	await Promise.all([page.waitForNavigation(), page.click('#wp-submit')]);
-}*/
-
-async function login(username = WP_USERNAME, password = WP_PASSWORD) {
-	await page.waitForSelector('#usernameOrEmail');
-	await page.focus('#usernameOrEmail');
-	await page.type('#usernameOrEmail', username);
-	await page.click('.login__form-action button.is-primary');
-	await page.waitFor(1000);
-	await page.focus('#password');
-	await page.type('#password', password);
-	await page.waitFor(1000);
-
-	await Promise.all([
-		page.waitForNavigation(),
-		page.click('.login__form-action button.is-primary'),
-	]);
 }
-
-/*export async function visitAdmin(adminPath, query) {
-	await goToWPPath(join('wp-admin', adminPath), query);
-
-	if (isWPPath('wp-login.php')) {
-		await login();
-		return visitAdmin(adminPath, query);
-	}
-}*/
 
 export async function visitAdmin(adminPath, query) {
 	await goToWPPath(join('wp-admin', adminPath), query);
 
-	if (page.url().indexOf('/log-in') !== -1) {
+	if (isWPPath('wp-login.php')) {
 		await login();
 		return visitAdmin(adminPath, query);
 	}
@@ -130,6 +111,48 @@ export async function newPost({ postType, enableTips = false } = {}) {
 		await page.reload();
 	}
 }
+*/
+
+async function login(username = WP_USERNAME, password = WP_PASSWORD) {
+	await page.waitForSelector('#usernameOrEmail');
+	await page.focus('#usernameOrEmail');
+	await page.type('#usernameOrEmail', username);
+	await page.click('.login__form-action button.is-primary');
+	await page.waitFor(1000);
+	await page.focus('#password');
+	await page.type('#password', password);
+	await page.waitFor(1000);
+
+	await Promise.all([
+		page.waitForNavigation(),
+		page.click('.login__form-action button.is-primary'),
+	]);
+}
+
+export async function visitAdmin(adminPath, query) {
+	await goToWPPath(join('wp-admin', adminPath), query);
+
+	if (page.url().indexOf('/log-in') !== -1) {
+		await login();
+		return visitAdmin(adminPath, query);
+	}
+}
+
+export async function newPost({ postType, enableTips = false } = {}) {
+	await visitAdmin('post-new.php', postType ? 'post_type=' + postType : '');
+	await page.waitFor(1000);
+
+	await page.evaluate(_enableTips => {
+		const action = _enableTips ? 'enableTips' : 'disableTips';
+		wp.data.dispatch('core/nux')[action]();
+	}, enableTips);
+
+	if (enableTips) {
+		await page.reload();
+	}
+}
+
+/***** END OVERRIDES *****/
 
 /**
  * Toggles the screen option with the given label.
