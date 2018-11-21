@@ -14,10 +14,10 @@ npm install
 
 2. Copy the `config-example.json` file as `config.json` and fill the `sandbox` object with the URL of a WPCOM Sandbox site and the credentials of an editor (or higher role) user.<br>To observe the tests visually, set `puppeteer.headless = false` in `config.json`, and increase `puppeteer.slowMo` until the tests are slow enough (I've found `50` to be my sweet spot).
 
-3. Obtain the e2e tests from a Gutenberg release (e.g. [`v4.2.0`]((https://github.com/WordPress/gutenberg/releases/tag/v4.2.0))):
+3. Obtain the e2e tests from a Gutenberg release (e.g. [`v4.4.0`]((https://github.com/WordPress/gutenberg/releases/tag/v4.4.0))):
 
 ```
-npm run update-e2e v4.2.0
+npm run update-e2e v4.4.0
 ```
 
 4. Overwrite the Core e2e with WPCOM specific instructions:
@@ -33,7 +33,7 @@ npm run test
 
 ## Sync with Gutenberg
 
-As of 2018-11-20, this uses [Gutenberg 4.2.0](https://github.com/WordPress/gutenberg/releases/tag/v4.2.0) as it's the version used by the WPCOM Sandbox.
+As of 2018-11-21, this uses [Gutenberg 4.4.0](https://github.com/WordPress/gutenberg/releases/tag/v4.4.0) as it's the version used by the WPCOM Sandbox.
 
 To update it as needed:
 

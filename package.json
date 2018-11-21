@@ -1,6 +1,6 @@
 {
   "name": "gutenlypso-e2e",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "repository": "git+https://github.com/Copons/gutenlypso-e2e.git",
   "description": "Manual e2e suite for Gutenberg running in a WPCOM Sandbox",
   "main": "index.js",
