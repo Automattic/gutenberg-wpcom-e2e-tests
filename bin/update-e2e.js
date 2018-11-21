@@ -28,3 +28,5 @@ const copyTests = spawnSync('cp', ['-r', './test/e2e/', '../e2e']);
 process.chdir('..');
 
 rimraf.sync('./tmp');
+
+console.log('e2e updated!');
