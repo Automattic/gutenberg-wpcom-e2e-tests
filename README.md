@@ -1,6 +1,6 @@
 # Gutenlypso e2e
 
-Manual e2e suite for Gutenberg running in a WPCOM Sandbox.
+Manual e2e suite for **Gutenberg v4.4.0** running in a WPCOM Sandbox.
 
 ## Instructions
 
@@ -20,15 +20,22 @@ npm install
 npm run update-e2e v4.4.0
 ```
 
-4. Overwrite the Core e2e with WPCOM specific instructions:
+4. Update `/e2e-overrides` if needed.
 
-```
-npm run overwrite-e2e
-```
+5. Turn on the Sandbox.
 
-5. Turn on the Sandbox and...
+6. Finally start testing! (This will also automatically merge `/e2e-overrides` into `/e2e`).
 ```
 npm run test
+```
+
+**Note**: to test a single spec, please update the [Jest config (`/e2e-overrides/jest.config.json`)](/e2e-overrides/jest.config.json) before running `npm run test`:
+
+```diff
+	"testMatch": [
+-		"<rootDir>/e2e/specs/**/(*.)test.js"
++		"<rootDir>/e2e/specs/foo-bar.test.js"
+	],
 ```
 
 ## Sync with Gutenberg
