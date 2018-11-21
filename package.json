@@ -5,6 +5,8 @@
   "description": "Manual e2e suite for Gutenberg running in a WPCOM Sandbox",
   "main": "index.js",
   "scripts": {
+    "overwrite-e2e": "node ./bin/overwrite-e2e.js",
+	"update-e2e": "node ./bin/update-e2e.js",
     "test": "cross-env JEST_PUPPETEER_CONFIG=./e2e-overrides/puppeteer.config.js node ./index.js test"
   },
   "author": "Automattic",

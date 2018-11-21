@@ -1,7 +1,6 @@
 /** @format */
 
 const rimraf = require('rimraf');
-const rsync = require('rsync');
 const { spawnSync } = require('child_process');
 
 const gutenbergRelease = process.argv.slice(2)[0];
@@ -26,12 +25,6 @@ const checkoutTag = spawnSync('git', ['checkout', 'tags/' + gutenbergRelease]);
 
 const copyTests = spawnSync('cp', ['-r', './test/e2e/', '../e2e']);
 
-const copyOverrides = new rsync()
-	.flags('a')
-	.source('../e2e-overrides/')
-	.destination('../e2e');
+process.chdir('..');
 
-copyOverrides.execute(function(error) {
-	console.log('Done!');
-	process.exit();
-});
+rimraf.sync('./tmp');
