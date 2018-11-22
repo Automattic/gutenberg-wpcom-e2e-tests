@@ -6,7 +6,7 @@
   "main": "index.js",
   "scripts": {
     "overwrite-e2e": "node ./bin/overwrite-e2e.js",
-	"update-e2e": "node ./bin/update-e2e.js",
+    "update-e2e": "node ./bin/update-e2e.js",
     "test": "npm run overwrite-e2e && cross-env JEST_PUPPETEER_CONFIG=./e2e-overrides/puppeteer.config.js node ./index.js test"
   },
   "author": "Automattic",
@@ -21,10 +21,10 @@
     "@babel/preset-react": "^7.0.0",
     "@babel/register": "^7.0.0",
     "@wordpress/i18n": "^3.1.0",
-    "@wordpress/jest-console": "2.0.6",
-    "@wordpress/jest-preset-default": "3.0.2",
-    "@wordpress/keycodes": "^2.0.3",
-    "@wordpress/url": "^2.3.0",
+    "@wordpress/jest-console": "2.0.7",
+    "@wordpress/jest-preset-default": "3.0.3",
+    "@wordpress/keycodes": "^2.0.5",
+    "@wordpress/url": "^2.3.1",
     "babel-core": "^7.0.0-bridge.0",
     "babel-jest": "^23.6.0",
     "cross-env": "^5.2.0",
