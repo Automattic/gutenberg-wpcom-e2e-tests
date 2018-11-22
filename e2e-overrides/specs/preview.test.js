@@ -118,7 +118,9 @@ describe('Preview', () => {
 
 		// Title in preview should match updated input.
 		previewTitle = await previewPage.$eval('.entry-title', node => node.textContent);
-		expect(previewTitle).toBe('Hello World! And more.');
+		/* OVERRIDE */
+		expect(previewTitle).toBe('Hello World! And more.');
+		/* END OVERRIDE */
 
 		// Published preview URL should include ID and nonce parameters.
 		const { query } = parse(previewPage.url(), true);
@@ -138,7 +140,7 @@ describe('Preview', () => {
 		previewTitle = await previewPage.$eval('.entry-title', node => node.textContent);
 
 		/* OVERRIDE */
-		expect(previewTitle).toBe('Hello World! And more.');
+		expect(previewTitle).toBe('Hello World! And more.');
 		/* END OVERRIDE */
 
 		await previewPage.close();
