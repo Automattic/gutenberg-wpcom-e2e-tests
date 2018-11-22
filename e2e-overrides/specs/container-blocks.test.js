@@ -69,7 +69,7 @@ xdescribe('InnerBlocks Template Sync', () => {
 	});
 });
 
-describe('Container block without paragraph support', () => {
+xdescribe('Container block without paragraph support', () => {
 	beforeAll(async () => {
 		await activatePlugin('gutenberg-test-container-block-without-paragraph');
 	});
