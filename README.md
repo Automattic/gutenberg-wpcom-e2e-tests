@@ -1,4 +1,4 @@
-# Gutenlypso e2e
+# Gutenberg on WPCOM e2e Tests
 
 Manual e2e suite for **Gutenberg v4.5.1** running in a WPCOM Sandbox.
 
