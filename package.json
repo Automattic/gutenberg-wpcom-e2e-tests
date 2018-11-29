@@ -30,7 +30,7 @@
     "cross-env": "^5.2.0",
     "expect-puppeteer": "^3.5.1",
     "jest": "23.6.0",
-    "jest-puppeteer": "3.2.1",
+    "jest-puppeteer": "^3.5.2",
     "node-fetch": "^2.3.0",
     "prettier": "^1.15.2",
     "puppeteer": "1.6.1",
