@@ -21,7 +21,6 @@ describe('preferences', () => {
 		/* OVERRIDE */
 		await page.waitFor(1000);
 		/* END OVERRIDE */
-
 		try {
 			return await page.$eval('.edit-post-sidebar__panel-tab.is-active', node => node.textContent);
 		} catch (error) {
@@ -37,7 +36,7 @@ describe('preferences', () => {
 		expect(await getActiveSidebarTabText()).toBe('Document');
 
 		// Change to "Block" tab.
-		await page.click('.edit-post-sidebar__panel-tab[aria-label="Block settings"]');
+		await page.click('.edit-post-sidebar__panel-tab[aria-label="Block"]');
 		expect(await getActiveSidebarTabText()).toBe('Block');
 
 		// Regression test: Reload resets to document tab.

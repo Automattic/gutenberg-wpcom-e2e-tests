@@ -14,7 +14,9 @@ import {
 } from '../support/utils';
 import { activatePlugin, deactivatePlugin } from '../support/plugins';
 
+/* OVERRIDE */
 xdescribe('Using Plugins API', () => {
+	/* END OVERRIDE */
 	beforeAll(async () => {
 		await activatePlugin('gutenberg-test-plugin-plugins-api');
 	});

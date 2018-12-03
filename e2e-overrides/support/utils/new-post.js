@@ -31,5 +31,6 @@ export async function newPost({ postType, title, content, excerpt, enableTips = 
 
 	if (enableTips) {
 		await page.reload();
+		await page.waitFor(1000);
 	}
 }

@@ -6,7 +6,9 @@
 
 import { newPost, insertBlock, publishPost } from '../support/utils';
 
+/* OVERRIDE */
 xdescribe('Compatibility with Classic Editor', () => {
+	/* END OVERRIDE */
 	beforeEach(async () => {
 		await newPost();
 	});

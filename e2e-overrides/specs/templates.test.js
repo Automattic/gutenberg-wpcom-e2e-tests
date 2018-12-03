@@ -16,7 +16,9 @@ import {
 } from '../support/utils';
 import { activatePlugin, deactivatePlugin } from '../support/plugins';
 
+/* OVERRIDE */
 xdescribe('templates', () => {
+	/* END OVERRIDE */
 	describe('Using a CPT with a predefined template', () => {
 		beforeAll(async () => {
 			await activatePlugin('gutenberg-test-plugin-templates');

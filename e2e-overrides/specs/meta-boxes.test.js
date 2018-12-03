@@ -7,7 +7,9 @@
 import { newPost, insertBlock, publishPost } from '../support/utils';
 import { activatePlugin, deactivatePlugin } from '../support/plugins';
 
+/* OVERRIDE */
 xdescribe('Meta boxes', () => {
+	/* END OVERRIDE */
 	beforeAll(async () => {
 		await activatePlugin('gutenberg-test-plugin-meta-box');
 		await newPost();

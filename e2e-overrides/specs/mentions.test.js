@@ -7,7 +7,9 @@
 import { newPost, getEditedPostContent, clickBlockAppender } from '../support/utils';
 import { WP_USERNAME } from '../support/utils/config';
 
-describe('autocomplete mentions', () => {
+/* OVERRIDE */
+xdescribe('autocomplete mentions', () => {
+	/* END OVERRIDE */
 	beforeAll(async () => {
 		await newPost();
 	});
