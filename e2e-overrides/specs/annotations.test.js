@@ -17,7 +17,9 @@ const clickOnBlockSettingsMenuItem = async buttonLabel => {
 
 const ANNOTATIONS_SELECTOR = '.annotation-text-e2e-tests';
 
+/* OVERRIDE */
 xdescribe('Using Plugins API', () => {
+	/* END OVERRIDE */
 	beforeAll(async () => {
 		await activatePlugin('gutenberg-test-plugin-plugins-api');
 	});

@@ -12,7 +12,7 @@ import {
 	publishPost,
 } from '../support/utils';
 
-xdescribe('Change detection', () => {
+describe('Change detection', () => {
 	let handleInterceptedRequest, hadInterceptedSave;
 
 	beforeEach(async () => {
@@ -138,7 +138,9 @@ xdescribe('Change detection', () => {
 		await assertIsDirty(false);
 	});
 
-	it('Should not prompt to confirm unsaved changes for new post with initial edits', async () => {
+	/* OVERRIDE */
+	xit('Should not prompt to confirm unsaved changes for new post with initial edits', async () => {
+		/* END OVERRIDE */
 		await newPost({
 			title: 'My New Post',
 			content: 'My content',
@@ -193,7 +195,9 @@ xdescribe('Change detection', () => {
 		expect(hadInterceptedSave).toBe(false);
 	});
 
-	it('Should prompt if save failed', async () => {
+	/* OVERRIDE */
+	xit('Should prompt if save failed', async () => {
+		/* END OVERRIDE */
 		await page.type('.editor-post-title__input', 'Hello World');
 
 		await page.setOfflineMode(true);
@@ -218,6 +222,9 @@ xdescribe('Change detection', () => {
 	});
 
 	it('Should prompt if changes and save is in-flight', async () => {
+		/* OVERRIDE */
+		await page.waitForSelector('.editor-post-title__input');
+		/* END OVERRIDE */
 		await page.type('.editor-post-title__input', 'Hello World');
 
 		// Hold the posts request so we don't deal with race conditions of the

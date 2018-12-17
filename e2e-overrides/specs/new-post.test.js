@@ -67,6 +67,9 @@ describe('new editor state', () => {
 		await page.waitForSelector('.editor-post-saved-state.is-saved');
 		// Reload the browser so a post is loaded with a title.
 		await page.reload();
+		/* OVERRIDE */
+		await page.waitFor(1000);
+		/* END OVERRIDE */
 
 		const activeElementClasses = await page.evaluate(() => {
 			return Object.values(document.activeElement.classList);

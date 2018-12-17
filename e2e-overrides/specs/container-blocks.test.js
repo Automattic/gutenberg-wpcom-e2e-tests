@@ -7,7 +7,9 @@
 import { newPost, insertBlock, switchToEditor, getEditedPostContent } from '../support/utils';
 import { activatePlugin, deactivatePlugin } from '../support/plugins';
 
+/* OVERRIDE */
 xdescribe('InnerBlocks Template Sync', () => {
+	/* END OVERRIDE */
 	beforeAll(async () => {
 		await activatePlugin('gutenberg-test-innerblocks-templates');
 	});

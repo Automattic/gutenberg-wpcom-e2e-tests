@@ -44,7 +44,7 @@ As of 2018-11-23, this uses [Gutenberg 4.5.1](https://github.com/WordPress/guten
 
 To update it as needed:
 
-1. Run `npm update-e2e` with the tag of a new Gutenberg release (e.g. `npm update-e2e v5.0.0`).
+1. Run `npm run update-e2e` with the tag of a new Gutenberg release (e.g. `npm run update-e2e v5.0.0`).
 
 2. Check if there are big changes between `/e2e-overrides` and the new `/e2e` folder, and update the overrides as needed. (**IMPORTANT**: keep the same folder structure!)<br>E.g. currently, most overrides are in `/support/utils.js`, but in future versions, all the utils functions will be moved into their own files.
-3. Run `npm overwrite-e2e` to copy the overrides in the `/e2e` folder.
+3. Run `npm run overwrite-e2e` to copy the overrides in the `/e2e` folder.

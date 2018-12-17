@@ -7,7 +7,9 @@
 import { clickBlockAppender, newPost } from '../support/utils';
 import { activatePlugin, deactivatePlugin } from '../support/plugins';
 
+/* OVERRIDE */
 xdescribe('Using Hooks API', () => {
+	/* END OVERRIDE */
 	beforeAll(async () => {
 		await activatePlugin('gutenberg-test-hooks-api');
 	});

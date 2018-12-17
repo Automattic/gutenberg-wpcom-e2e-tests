@@ -32,10 +32,9 @@ describe('invalid blocks', () => {
 
 		// Takes the focus away from the block so the invalid warning is triggered
 		await page.click('.editor-post-save-draft');
-
 		/* OVERRIDE */
-		//expect(console).toHaveErrored();
-		//expect(console).toHaveWarned();
+		//expect( console ).toHaveErrored();
+		//expect( console ).toHaveWarned();
 		/* END OVERRIDE */
 
 		// Click on the 'resolve' button

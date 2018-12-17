@@ -38,7 +38,9 @@ async function selectFirstBlock() {
 	await navButtons[0].click();
 }
 
+/* OVERRIDE */
 xdescribe('Correctly Renders Block Icons on Inserter and Inspector', () => {
+	/* END OVERRIDE */
 	const dashIconRegex = /<svg.*?class=".*?dashicons-cart.*?">.*?<\/svg>/;
 	const circleString =
 		'<circle cx="10" cy="10" r="10" fill="red" stroke="blue" stroke-width="10"></circle>';
